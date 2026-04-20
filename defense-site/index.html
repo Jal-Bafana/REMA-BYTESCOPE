@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'" />
+  <title>SignalDesk Lab | Code Analysis Portal</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="lab-header">
+    <h1>SignalDesk Lab</h1>
+    <p>Independent analysis portal for campaign investigations.</p>
+  </header>
+
+  <main class="layout">
+    <section class="panel">
+      <h2>Obfuscated Sample</h2>
+      <p>Paste the obfuscated content copied from the downloaded TXT file and decode it.</p>
+
+      <label for="obfuscatedInput" class="label">Obfuscated Input</label>
+      <textarea id="obfuscatedInput" class="input-box" spellcheck="false" placeholder="Paste payload here, for example:&#10;PAYLOAD_B64_2=...&#10;or var _0x7f='...';eval(atob(atob(_0x7f)));"></textarea>
+
+      <div class="actions">
+        <button id="loadBtn" type="button">Load Demo Payload</button>
+        <button id="decodeBtn" type="button">Decode Layers</button>
+        <button id="clearBtn" type="button">Clear</button>
+      </div>
+
+      <p id="decodeStatus" class="status-text">Waiting for input.</p>
+
+      <h3>Extracted Obfuscated String</h3>
+      <pre id="sampleCode" class="code-box">No payload extracted yet.</pre>
+
+      <h3>Decoded Output</h3>
+      <pre id="decodedCode" class="code-box">Decoded script output will appear here.</pre>
+    </section>
+
+    <section class="panel">
+      <h2>Analyst Report</h2>
+      <ul class="report">
+        <li><strong>Case:</strong> ByteScope Campaign Artifact</li>
+        <li><strong>Artifact Type:</strong> JavaScript utility package with obfuscation signatures</li>
+        <li><strong>Observed Techniques:</strong> Base64 layers, atob decode chain, eval-style token patterns</li>
+        <li><strong>Behavior Signatures:</strong> cookie-read strings, keypress-listener strings, localhost callback strings</li>
+        <li><strong>Risk Posture:</strong> High if untrusted files are executed directly</li>
+      </ul>
+
+      <h3>Recommended Controls</h3>
+      <ul class="report">
+        <li>Enforce strict CSP and script source boundaries.</li>
+        <li>Block unmanaged script downloads on managed endpoints.</li>
+        <li>Use sandboxed analysis for unknown JavaScript files.</li>
+        <li>Require manual approval for runtime code execution flows.</li>
+      </ul>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

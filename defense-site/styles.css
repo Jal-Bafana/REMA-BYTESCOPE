@@ -1,0 +1,153 @@
+:root {
+  --bg: #0b1118;
+  --bg-alt: #111a24;
+  --ink: #dce8f3;
+  --muted: #94a8bb;
+  --line: #2b3f52;
+  --panel: #101926;
+  --accent: #4db3ff;
+  --accent-2: #8ad6ff;
+  --ok: #5ae2a3;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  color: var(--ink);
+  font-family: "Consolas", "Cascadia Code", monospace;
+  background:
+    radial-gradient(circle at 90% 10%, rgba(77, 179, 255, 0.14), transparent 36%),
+    radial-gradient(circle at 15% 80%, rgba(138, 214, 255, 0.12), transparent 34%),
+    linear-gradient(160deg, var(--bg), var(--bg-alt));
+}
+
+.lab-header {
+  padding: 1.4rem 1.25rem 0.8rem;
+  border-bottom: 1px solid var(--line);
+}
+
+.lab-header h1 {
+  margin: 0;
+  color: var(--accent-2);
+  letter-spacing: 0.06em;
+}
+
+.lab-header p {
+  margin: 0.45rem 0 0;
+  color: var(--muted);
+}
+
+.layout {
+  width: min(1120px, 94%);
+  margin: 1.2rem auto 2.2rem;
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 1rem;
+}
+
+.panel {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 1.05rem;
+  box-shadow: 0 14px 32px rgba(0, 0, 0, 0.3);
+}
+
+.panel h2,
+.panel h3 {
+  color: var(--accent-2);
+}
+
+.label {
+  display: block;
+  margin: 0.55rem 0 0.4rem;
+  color: #bfd8eb;
+  font-weight: 700;
+}
+
+.input-box {
+  width: 100%;
+  min-height: 145px;
+  background: #09121c;
+  color: #dce8f3;
+  border: 1px solid #203548;
+  border-radius: 10px;
+  padding: 0.8rem;
+  font-family: inherit;
+  line-height: 1.45;
+  resize: vertical;
+}
+
+.input-box:focus {
+  outline: 2px solid rgba(77, 179, 255, 0.35);
+  border-color: #3b7ca3;
+}
+
+.code-box {
+  background: #09121c;
+  border: 1px solid #203548;
+  border-radius: 10px;
+  padding: 0.9rem;
+  min-height: 120px;
+  max-height: 300px;
+  overflow: auto;
+  white-space: pre-wrap;
+  word-break: break-word;
+  overflow-wrap: anywhere;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+  margin: 0.75rem 0 0.9rem;
+}
+
+button {
+  border: 1px solid #2d5770;
+  background: linear-gradient(150deg, #175a83, #0f425f);
+  color: #e7f5ff;
+  padding: 0.62rem 0.85rem;
+  border-radius: 10px;
+  cursor: pointer;
+  font-family: inherit;
+  font-weight: 700;
+}
+
+button:hover {
+  border-color: #4a8db1;
+}
+
+.status-text {
+  margin: 0.15rem 0 0.4rem;
+  color: var(--ok);
+  font-weight: 700;
+}
+
+.report {
+  padding-left: 1rem;
+}
+
+.report li {
+  margin-bottom: 0.5rem;
+  color: #c9d9e9;
+}
+
+@media (max-width: 880px) {
+  .layout {
+    grid-template-columns: 1fr;
+    width: min(1120px, 96%);
+  }
+
+  .lab-header {
+    padding: 1.2rem 1rem 0.8rem;
+  }
+
+  .panel {
+    padding: 0.95rem;
+  }
+}
