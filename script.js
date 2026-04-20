@@ -1,8 +1,17 @@
 (function () {
   const STORAGE_KEYS = {
     logs: "rema_logs",
-    credentials: "rema_credentials"
+    credentials: "rema_credentials",
+    adRemediation: "rema_ad_remediation_enabled"
   };
+
+  function isAdRemediated() {
+    try {
+      return localStorage.getItem(STORAGE_KEYS.adRemediation) === "true";
+    } catch (_error) {
+      return false;
+    }
+  }
 
   function getLogs() {
     try {
@@ -51,7 +60,15 @@
   }
 
   function safeRedirect(path) {
-    const allowList = ["login.html", "dashboard.html", "malicious.html", "index.html"];
+    const allowList = [
+      "login.html",
+      "dashboard.html",
+      "malicious.html",
+      "index.html",
+      "article-secure-prompting.html",
+      "article-soc-workflows.html",
+      "article-threat-modeling.html"
+    ];
     const blockedNote = document.getElementById("redirectBlockNote");
     if (!allowList.includes(path)) {
       addLog("Unsafe redirect blocked", `Attempted target: ${path}`);
@@ -71,9 +88,30 @@
       return;
     }
 
+    const adTitle = adBanner.querySelector("h2");
+    const adText = adBanner.querySelector("p:not(.ad-label)");
+    const remediated = isAdRemediated();
+
+    if (remediated) {
+      adBanner.classList.remove("attack");
+      adBanner.classList.add("safe-ad");
+      if (adTitle) {
+        adTitle.textContent = "Build Better Prompt Pipelines";
+      }
+      if (adText) {
+        adText.textContent = "Read a trusted engineering guide from verified partner content.";
+      }
+      adClickBtn.textContent = "Read Guide";
+    }
+
     const goToLogin = function () {
-      addLog("Ad clicked", "User clicked FREE API Credits banner");
-      safeRedirect("login.html");
+      if (isAdRemediated()) {
+        addLog("Safe ad clicked", "User clicked remediated ad and stayed on trusted content path");
+        safeRedirect("article-soc-workflows.html");
+      } else {
+        addLog("Ad clicked", "User clicked FREE API Credits banner");
+        safeRedirect("login.html");
+      }
     };
 
     adBanner.addEventListener("click", function (event) {

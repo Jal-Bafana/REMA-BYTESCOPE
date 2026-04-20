@@ -137,6 +137,36 @@ button:hover {
   color: #c9d9e9;
 }
 
+.remediation-box {
+  margin-bottom: 1rem;
+  padding: 0.85rem;
+  border: 1px solid #2c4f66;
+  border-radius: 12px;
+  background: #0d1a29;
+}
+
+.small-text {
+  color: var(--muted);
+  margin-top: 0.3rem;
+}
+
+.status-pill {
+  display: inline-block;
+  margin: 0.45rem 0 0.6rem;
+  padding: 0.4rem 0.65rem;
+  border-radius: 999px;
+  border: 1px solid #80574f;
+  background: #2a1a18;
+  color: #ffb3a1;
+  font-weight: 700;
+}
+
+.status-pill.applied {
+  border-color: #2f6c56;
+  background: #13251e;
+  color: #9af8c9;
+}
+
 @media (max-width: 880px) {
   .layout {
     grid-template-columns: 1fr;

@@ -1,4 +1,9 @@
 (function () {
+  const REMEDIATION_KEYS = {
+    enabled: "rema_ad_remediation_enabled",
+    updatedAt: "rema_ad_remediation_updated_at"
+  };
+
   const input = document.getElementById("obfuscatedInput");
   const loadBtn = document.getElementById("loadBtn");
   const decodeBtn = document.getElementById("decodeBtn");
@@ -6,6 +11,9 @@
   const decodeStatus = document.getElementById("decodeStatus");
   const sampleCode = document.getElementById("sampleCode");
   const decodedCode = document.getElementById("decodedCode");
+  const toggleRemediationBtn = document.getElementById("toggleRemediationBtn");
+  const remediationStatus = document.getElementById("remediationStatus");
+  const remediationMeta = document.getElementById("remediationMeta");
 
   const plain = [
     "/* payload preview */",
@@ -69,6 +77,41 @@
     }
 
     return { output, rounds };
+  }
+
+  function isRemediationEnabled() {
+    try {
+      return localStorage.getItem(REMEDIATION_KEYS.enabled) === "true";
+    } catch (_error) {
+      return false;
+    }
+  }
+
+  function setRemediationEnabled(enabled) {
+    const now = new Date().toLocaleString();
+    localStorage.setItem(REMEDIATION_KEYS.enabled, String(enabled));
+    localStorage.setItem(REMEDIATION_KEYS.updatedAt, now);
+  }
+
+  function renderRemediationStatus() {
+    if (!remediationStatus || !toggleRemediationBtn || !remediationMeta) {
+      return;
+    }
+
+    const enabled = isRemediationEnabled();
+    const updatedAt = localStorage.getItem(REMEDIATION_KEYS.updatedAt);
+
+    if (enabled) {
+      remediationStatus.textContent = "Status: Remediation active (safe ad enforced)";
+      remediationStatus.classList.add("applied");
+      toggleRemediationBtn.textContent = "Disable Remediation";
+    } else {
+      remediationStatus.textContent = "Status: Compromised ad mode active";
+      remediationStatus.classList.remove("applied");
+      toggleRemediationBtn.textContent = "Apply Remediation";
+    }
+
+    remediationMeta.textContent = `Last update: ${updatedAt || "not applied"}`;
   }
 
   if (loadBtn) {
@@ -137,4 +180,13 @@
       }
     });
   }
+
+  if (toggleRemediationBtn) {
+    toggleRemediationBtn.addEventListener("click", function () {
+      setRemediationEnabled(!isRemediationEnabled());
+      renderRemediationStatus();
+    });
+  }
+
+  renderRemediationStatus();
 })();

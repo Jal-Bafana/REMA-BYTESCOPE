@@ -166,6 +166,11 @@ body {
   cursor: pointer;
 }
 
+.safe-ad {
+  border: 1px solid #b8d6df;
+  background: linear-gradient(140deg, #eef8fb, #f7fdff);
+}
+
 .ad-label {
   margin-bottom: 0.25rem;
   font-size: 0.75rem;
