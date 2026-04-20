@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'" />
+  <title>Dashboard - ByteScope Journal</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="page-dashboard">
+  <header class="topbar">
+    <div class="brand">Byte<span>Scope</span></div>
+  </header>
+
+  <main class="container single-col">
+    <section class="card stack-gap">
+      <p class="badge attack">Offers</p>
+      <h1>Available Coupons</h1>
+      <p>Exclusive offers for selected users.</p>
+      <div class="coupon card mini attack-soft">
+        <h3>Free API Credits Bundle</h3>
+        <p>Claim your developer reward package now.</p>
+        <button id="couponBtn" class="btn attack-btn" type="button">Claim Free API Credits</button>
+      </div>
+
+      <p id="redirectBlockNote" class="muted"></p>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
