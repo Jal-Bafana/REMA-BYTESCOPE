@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'" />
+  <title>Threat Modeling for LLM Apps | ByteScope Journal</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="page-blog">
+  <header class="topbar">
+    <div class="brand">Byte<span>Scope</span></div>
+  </header>
+
+  <main class="container article-page">
+    <article class="card article-long">
+      <p class="badge defense">Architecture</p>
+      <h1>Threat Modeling for LLM Applications in Production</h1>
+      <p class="muted">Published April 2026 | 11 min read</p>
+
+      <p>
+        LLM applications are often built quickly with an emphasis on feature release velocity. This creates value fast,
+        but it can also blur security boundaries between user input, retrieved context, tool invocation, and downstream
+        systems. Threat modeling helps teams make those boundaries explicit.
+      </p>
+      <p>
+        A high-value model starts by mapping assets. In an LLM app, assets include prompts, embeddings, retrieval
+        corpora, model outputs, action APIs, identity context, and audit events. Once assets are mapped, teams can
+        define threat paths and mitigation controls before scaling usage.
+      </p>
+
+      <h2>Common Threat Categories in LLM Workloads</h2>
+      <p>
+        Prompt injection remains a key concern, especially in retrieval-augmented generation systems where external
+        text can influence model behavior. Context poisoning can distort recommendations. Tool misuse can cause
+        unauthorized side effects if action boundaries are weak.
+      </p>
+      <p>
+        Data leakage is another major risk. Overly broad context windows may expose private data, while generated
+        outputs can accidentally include sensitive fragments. Logging pipelines must balance observability with
+        privacy controls to avoid creating secondary risk through telemetry exposure.
+      </p>
+
+      <h2>Threat Modeling Process That Works</h2>
+      <p>
+        Start with a single user journey and model each trust boundary. Ask three questions at every boundary:
+        what can enter, what can execute, and what can leave. Then define expected behavior and denial behavior.
+        This makes it easier to implement policy checks that fail safely.
+      </p>
+      <p>
+        Teams should also define control ownership. Application engineers, platform teams, and security analysts
+        must know which controls they own and how control failures are escalated. Threat models become actionable
+        only when tied to ownership and operational response.
+      </p>
+
+      <h2>Controls to Prioritize Early</h2>
+      <p>
+        Strong early controls include retrieval source trust scoring, schema-validated tool calls, output filtering,
+        role-aware context injection, and deterministic approval gates for high-risk actions. In production, these
+        controls should be monitored with explicit drift alerts and change reviews.
+      </p>
+      <p>
+        Finally, run adversarial testing regularly. Red-team style exercises against prompts and tool pipelines reveal
+        hidden assumptions that static reviews often miss. Defensive maturity grows faster when tests are realistic and
+        findings feed directly into sprint planning.
+      </p>
+
+      <h2>Conclusion</h2>
+      <p>
+        Threat modeling for LLM applications is not optional at scale. It is the fastest path to understanding risk,
+        enforcing safe boundaries, and building trustworthy AI products that can operate in high-impact environments.
+      </p>
+    </article>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

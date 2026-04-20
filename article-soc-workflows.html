@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'" />
+  <title>Modern SOC Workflows | ByteScope Journal</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="page-blog">
+  <header class="topbar">
+    <div class="brand">Byte<span>Scope</span></div>
+  </header>
+
+  <main class="container article-page">
+    <article class="card article-long">
+      <p class="badge defense">Operations</p>
+      <h1>Modern SOC Workflows for High-Volume Alert Environments</h1>
+      <p class="muted">Published April 2026 | 10 min read</p>
+
+      <p>
+        Security operations centers have shifted from static SIEM-only monitoring to layered workflows that combine
+        endpoint telemetry, cloud activity signals, behavior analytics, and threat intelligence enrichment. The core
+        challenge is no longer collecting data. The challenge is processing and prioritizing signal at scale.
+      </p>
+      <p>
+        Mature SOC teams now build detection pipelines with explicit lifecycle design: ingest, normalize, enrich,
+        score, triage, investigate, contain, recover, and continuously improve. Every stage must be measurable.
+      </p>
+
+      <h2>Alert Quality Over Alert Volume</h2>
+      <p>
+        Analysts lose valuable time when systems generate excessive low-context alerts. Organizations that improve
+        detection quality focus on context stitching. They correlate authentication patterns, endpoint process trees,
+        DNS behavior, and user-risk baselines into a single investigation object.
+      </p>
+      <p>
+        This reduces context switching and improves the mean time to understand. Instead of evaluating isolated
+        indicators, analysts can evaluate narrative sequences that reveal intent, method, and blast radius.
+      </p>
+
+      <h2>Tiered Investigation Design</h2>
+      <p>
+        A practical SOC model uses clear tier responsibilities. Tier 1 validates and routes. Tier 2 performs deep
+        technical investigation and scoping. Tier 3 handles detection engineering, playbook tuning, and strategic
+        incident response support. These boundaries are not rigid, but they prevent overlap chaos in high-pressure
+        moments.
+      </p>
+      <p>
+        The most effective teams pair this with playbook-driven automation. Repetitive checks such as hash lookups,
+        geolocation enrichment, and baseline comparisons can be automated so analysts reserve time for judgment-heavy
+        tasks like intent evaluation and containment sequencing.
+      </p>
+
+      <h2>Metrics That Actually Matter</h2>
+      <p>
+        Mean time to acknowledge and mean time to close are useful, but incomplete. SOC leadership should also track
+        false-positive rates by rule family, containment confidence scores, reopened incident percentages, and
+        post-incident control uplift. These metrics reveal whether the SOC is improving system resilience.
+      </p>
+      <p>
+        Detection engineering metrics should include rule freshness, environment coverage, and validation cadence.
+        Rules not tested against recent threat patterns decay quickly. A healthy SOC treats detections like software:
+        versioned, tested, reviewed, and continuously deployed.
+      </p>
+
+      <h2>Final Thoughts</h2>
+      <p>
+        Modern SOC operations are multidisciplinary. Success depends on process discipline, quality data engineering,
+        human judgment, and repeatable response frameworks. Teams that invest in workflow design gain both speed and
+        confidence during high-severity events.
+      </p>
+    </article>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
